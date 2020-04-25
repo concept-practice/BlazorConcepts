@@ -1,0 +1,36 @@
+﻿<h3>BasicFormComponent</h3>
+
+@DateMin
+
+<EditForm Model="@Airplane" OnSubmit="@SubmitForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <InputText @bind-Value="Airplane.Manufacturer" class="form-control"></InputText>
+        <ValidationMessage For="() => Airplane.Manufacturer" />
+    </div>
+    <div class="form-group">
+        <InputText @bind-Value="Airplane.Model" class="form-control"></InputText>
+        <ValidationMessage For="() => Airplane.Model" />
+    </div>
+    <div class="form-group">
+        <InputDate @bind-Value="Airplane.Date" class="form-control" min="@DateMin"></InputDate>
+        <ValidationMessage For="() => Airplane.Date" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+<h1>Status: @Status</h1>
+
+
+@code {
+    public string Status { get; set; }
+
+    public Airplane Airplane { get; set; } = new Airplane();
+
+    public void SubmitForm()
+    {
+        Status = Airplane.Manufacturer + " " + Airplane.Model;
+    }
+
+    public string DateMin { get; set; } = DateTime.Now.ToString("yyyy-MM-dd");
+}

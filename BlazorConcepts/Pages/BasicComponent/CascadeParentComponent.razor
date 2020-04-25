@@ -1,0 +1,11 @@
+﻿<div>
+    <p>I have a cascading value!</p>
+    <CascadingValue Value="Cascade">
+        <CascadeChildComponent />
+    </CascadingValue>
+</div>
+
+
+@code {
+    public string Cascade { get; set; } = "I cascade down!";
+}

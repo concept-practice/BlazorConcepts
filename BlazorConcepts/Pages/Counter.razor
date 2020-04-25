@@ -1,0 +1,14 @@
+﻿@page "/counter"
+@using BlazorConcepts.Pages.Store
+
+<h1>Counter</h1>
+
+<p>Current count: @Store.State.Value</p>
+
+<button class="btn btn-primary" @onclick="() => Store.Dispatch(new IncreaseCounter(1))">Increase!</button>
+<button class="btn btn-primary" @onclick="() => Store.Dispatch(new DecreaseCounter(1))">Decrease!</button>
+
+@code {
+    [CascadingParameter]
+    public StateStore Store { get; set; }
+}

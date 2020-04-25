@@ -1,0 +1,12 @@
+﻿@inject NavigationManager NavigationManager
+
+<h3>CodeNavigationComponent</h3>
+<button class="btn btn-primary" @onclick="NavByCode">Navigate By Code!</button>
+
+@code {
+
+    public void NavByCode()
+    {
+        NavigationManager.NavigateTo("/MyParams/4");
+    }
+}

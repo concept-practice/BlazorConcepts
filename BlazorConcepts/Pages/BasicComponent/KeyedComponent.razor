@@ -1,0 +1,13 @@
+﻿<div>
+    <p>My list is keyed!</p>
+    <ul>
+        @foreach (var i in Ints)
+        {
+            <li @key="i">@i</li>
+        }
+    </ul>
+</div>
+
+@code {
+    public IEnumerable<int> Ints { get; set; } = new List<int>{ 1, 2, 3 };
+}

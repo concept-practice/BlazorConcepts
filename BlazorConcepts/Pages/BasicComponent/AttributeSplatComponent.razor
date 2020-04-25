@@ -1,0 +1,19 @@
+﻿<div>
+    <p>This input has splatted attributes!</p>
+    <input @attributes="Attributes"/>
+</div>
+
+@code {
+    public Dictionary<string, object> Attributes { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Attributes = new Dictionary<string, object>
+        {
+            { "type", "number" },
+            { "min", 10 },
+            { "max", 19 }
+        };
+    }
+
+}

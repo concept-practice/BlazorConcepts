@@ -1,0 +1,12 @@
+﻿@page "/MyParams"
+@page "/MyParams/{Id:int}"
+
+<h3>RouteParamsComponent</h3>
+<p>The id is: @Id</p>
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; } = 0;
+
+}

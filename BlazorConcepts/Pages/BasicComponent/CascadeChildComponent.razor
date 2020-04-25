@@ -1,0 +1,9 @@
+﻿<div>
+    <p>I can see a cascading value!</p>
+    @Message
+</div>
+
+@code {
+    [CascadingParameter]
+    public string Message { get; set; }
+}

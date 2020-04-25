@@ -1,0 +1,21 @@
+﻿<div>
+    <input type="checkbox" checked="@ShouldShow" @onchange="OnShowChange"/>
+
+    @if (ShouldShow)
+    {
+        <p>Hey, you showed me!</p>
+    }
+    else
+    {
+        <p>Dang, I'm hidden.</p>
+    }
+</div>
+
+@code {
+    public bool ShouldShow { get; set; } = true;
+
+    public void OnShowChange()
+    {
+        ShouldShow = !ShouldShow;
+    }
+}

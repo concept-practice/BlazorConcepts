@@ -1,0 +1,9 @@
+﻿<div>
+    <p>I have two way binding!</p>
+    <input type="text" @bind="Value" @bind:event="oninput"/>
+    <p>@Value</p>
+</div>
+
+@code {
+    public string Value { get; set; }
+}

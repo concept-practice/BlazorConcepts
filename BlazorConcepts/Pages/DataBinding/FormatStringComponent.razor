@@ -1,0 +1,8 @@
+﻿<div>
+    <p>I have a formatted string!</p>
+    <input @bind="DateTime" @bind:format="hh:mm:ss.f" />
+</div>
+
+@code {
+    public DateTime DateTime { get; set; } = DateTime.Now;
+}

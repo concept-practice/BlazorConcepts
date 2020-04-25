@@ -1,0 +1,16 @@
+﻿<h3>ParentEventComponent</h3>
+
+<ChildEventComponent ChildClick="StuffHappened"></ChildEventComponent>
+<div>
+    @Counter;
+</div>
+
+@code {
+
+    public int Counter { get; set; }
+
+    public void StuffHappened()
+    {
+        Counter++;
+    }
+}
