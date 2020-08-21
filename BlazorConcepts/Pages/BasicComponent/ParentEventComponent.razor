@@ -1,16 +1,26 @@
 ﻿<h3>ParentEventComponent</h3>
 
-<ChildEventComponent ChildClick="StuffHappened"></ChildEventComponent>
+<ChildEventComponent ChildClick="StuffHappened" MouseClick="MouseStuff"></ChildEventComponent>
 <div>
-    @Counter;
+    @Counter
+</div>
+<div>
+    @MouseJunk
 </div>
 
 @code {
 
     public int Counter { get; set; }
 
+    public string MouseJunk { get; set; }
+
     public void StuffHappened()
     {
         Counter++;
+    }
+
+    public void MouseStuff(MouseEventArgs e)
+    {
+        MouseJunk = $"X: {e.ClientX} Y: {e.ClientY}";
     }
 }

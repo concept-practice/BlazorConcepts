@@ -1,9 +1,13 @@
 ﻿<h3>ChildEventComponent</h3>
 
 <button class="btn btn-primary" @onclick="ChildClick">Click Me!</button>
+<button class="btn btn-warning" @onclick="MouseClick">Do Mouse Stuff!</button>
 
 @code {
 
     [Parameter]
     public EventCallback ChildClick { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> MouseClick { get; set; }
 }
