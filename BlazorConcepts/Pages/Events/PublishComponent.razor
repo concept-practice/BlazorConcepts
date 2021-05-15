@@ -1,0 +1,19 @@
+﻿@using MediatR
+@inject IPublisher _publisher;
+
+<h3>PublishComponent</h3>
+
+<button class="btn btn-primary" @onclick="@PublishNotification">Send Event!</button>
+
+CallCount: @CallCount
+
+@code {
+
+    public int CallCount { get; set; }
+
+    public async Task PublishNotification()
+    {
+        var bleh = new Random().Next(0, 10);
+        await _publisher.Publish(new MyNotification(bleh));
+    }
+}

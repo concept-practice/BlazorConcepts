@@ -1,5 +1,6 @@
 ﻿@page "/counter"
 @using BlazorConcepts.Pages.Store
+@implements IDisposable
 
 <h1>Counter</h1>
 
@@ -7,8 +8,34 @@
 
 <button class="btn btn-primary" @onclick="() => Store.Dispatch(new IncreaseCounter(1))">Increase!</button>
 <button class="btn btn-primary" @onclick="() => Store.Dispatch(new DecreaseCounter(1))">Decrease!</button>
+<button class="btn btn-primary" @onclick="() => Store.Dispatch(new FireButtonEvent())">Do event stuff!</button>
+
+You fire the event: @EventCounter times! at @EventTime
 
 @code {
+
     [CascadingParameter]
     public StateStore Store { get; set; }
+
+    public int EventCounter { get; set; }
+
+    public DateTime EventTime { get; set; }
+     
+    protected override void OnInitialized()
+    {
+        Store.FireButtonHandler += DoSomething;
+        base.OnInitialized();
+    }
+
+    public void Dispose()
+    {
+        Store.FireButtonHandler -= DoSomething;
+    }
+
+    public void DoSomething(object sender, FireButtonEvent e)
+    {
+        EventCounter++;
+        EventTime = e.DateTime;
+    }
+
 }

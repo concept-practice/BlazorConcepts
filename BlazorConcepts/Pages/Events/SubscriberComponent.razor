@@ -1,0 +1,10 @@
+﻿@using BlazorConcepts.Pages.Store
+
+<h3>SubscriberComponent</h3>
+
+<p>Event handled at @MyState.AnotherValue</p>
+
+@code {
+    [CascadingParameter]
+    public MediatorState MyState { get; set; }
+}

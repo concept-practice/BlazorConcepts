@@ -1,0 +1,13 @@
+﻿@using MediatR
+@inject IPublisher _publisher;
+<h3>AddTablePublisher</h3>
+
+<button class="btn btn-primary" @onclick="@PublishEvent">Add Table Row!</button>
+
+@code {
+
+    public async Task PublishEvent()
+    {
+        await _publisher.Publish(new MyNotification(new Random().Next(0, 100)));
+    }
+}
