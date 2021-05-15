@@ -1,11 +1,14 @@
 ﻿<h3>ParentEventComponent</h3>
 
-<ChildEventComponent ChildClick="StuffHappened" MouseClick="MouseStuff"></ChildEventComponent>
+<ChildEventComponent ChildClick="StuffHappened" MouseClick="MouseStuff" InputCallback="InputStuff"></ChildEventComponent>
 <div>
     @Counter
 </div>
 <div>
     @MouseJunk
+</div>
+<div>
+    @ChangeJunk
 </div>
 
 @code {
@@ -13,6 +16,8 @@
     public int Counter { get; set; }
 
     public string MouseJunk { get; set; }
+
+    public string ChangeJunk { get; set; }
 
     public void StuffHappened()
     {
@@ -22,5 +27,10 @@
     public void MouseStuff(MouseEventArgs e)
     {
         MouseJunk = $"X: {e.ClientX} Y: {e.ClientY}";
+    }
+
+    public void InputStuff(ChangeEventArgs e)
+    {
+        ChangeJunk = (string)e.Value;
     }
 }

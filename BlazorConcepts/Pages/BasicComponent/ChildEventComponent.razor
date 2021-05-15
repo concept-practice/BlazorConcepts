@@ -2,6 +2,7 @@
 
 <button class="btn btn-primary" @onclick="ChildClick">Click Me!</button>
 <button class="btn btn-warning" @onclick="MouseClick">Do Mouse Stuff!</button>
+<input class="form-control" type="text" @bind="Default" @bind:event="oninput" />
 
 @code {
 
@@ -10,4 +11,9 @@
 
     [Parameter]
     public EventCallback<MouseEventArgs> MouseClick { get; set; }
+
+    [Parameter]
+    public EventCallback<ChangeEventArgs> InputCallback { get; set; }
+
+    public string Default { get; set; } = "bs";
 }
