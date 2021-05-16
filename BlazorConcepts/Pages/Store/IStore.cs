@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlazorConcepts.Pages.Store
 {
-    public interface IStore
+    public interface IStore<TEvent> where TEvent : IAction
     {
-        void AddHandler(EventHandler<IAction> action);
-        void RemoveHandler(EventHandler<IAction> action);
+        event EventHandler<TEvent> EventHandler;
     }
 }

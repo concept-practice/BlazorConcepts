@@ -3,28 +3,20 @@ using Microsoft.AspNetCore.Components;
 
 namespace BlazorConcepts.Pages.Store
 {
-    public abstract class BaseNotificationHandler<TStore, TEvent> : ComponentBase, IDisposable
-        where TStore : IEvent<TEvent>
+    public abstract class BaseNotificationHandler<TEvent> : ComponentBase, IDisposable
+        where TEvent : IAction
     {
         [CascadingParameter]
-        public TStore StateStore { get; set; }
+        public StateStore StateStore { get; set; }
 
-        protected override void OnInitialized()
+        protected virtual void HandleEvent(object sender, TEvent notification)
         {
-            StateStore.EventHandler += HandleEvent;
-            StateStore.EventHandler += UpdateState;
-            base.OnInitialized();
+            UpdateState(sender, notification);
         }
 
-        public abstract void HandleEvent(object sender, TEvent notification);
+        public abstract void Dispose();
 
-        public void Dispose()
-        {
-            StateStore.EventHandler -= HandleEvent;
-            StateStore.EventHandler -= UpdateState;
-        }
-
-        private void UpdateState(object sender, TEvent notification)
+        protected void UpdateState(object sender, TEvent notification)
         {
             StateHasChanged();
         }

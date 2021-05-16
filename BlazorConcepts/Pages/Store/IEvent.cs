@@ -2,7 +2,7 @@
 
 namespace BlazorConcepts.Pages.Store
 {
-    public interface IEvent<TEvent>
+    public interface IEvent<TEvent> where TEvent : IAction
     {
         event EventHandler<TEvent> EventHandler;
     }

@@ -1,4 +1,4 @@
-﻿@inherits BaseNotificationHandler<StateStore, FireButtonEvent>
+﻿@inherits BaseNotificationHandler<FireButtonEvent>
 
 <h3>CounterSubscriber</h3>
 
@@ -8,8 +8,14 @@
 @code {
     public DateTime DateTime { get; set; }
 
-    public override void HandleEvent(object sender, FireButtonEvent notification)
+    protected override void OnInitialized()
     {
-        DateTime = notification.DateTime;
+        StateStore.EventHandler += HandleEvent;
+    }
+
+
+    public override void Dispose()
+    {
+        StateStore.EventHandler -= HandleEvent;
     }
 }

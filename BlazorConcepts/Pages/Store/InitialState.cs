@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BlazorConcepts.Pages.Store
+﻿namespace BlazorConcepts.Pages.Store
 {
     public class InitialState
     {

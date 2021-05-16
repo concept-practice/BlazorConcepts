@@ -23,13 +23,13 @@ You fire the event: @EventCounter times! at @EventTime
      
     protected override void OnInitialized()
     {
-        Store.FireButtonHandler += DoSomething;
+        Store.EventHandler += DoSomething;
         base.OnInitialized();
     }
 
     public void Dispose()
     {
-        Store.FireButtonHandler -= DoSomething;
+        Store.EventHandler -= DoSomething;
     }
 
     public void DoSomething(object sender, FireButtonEvent e)
